@@ -20,12 +20,7 @@ int main(){
         int clientSize = sizeof( clientAddress);
         int clientSocket = accept(sockfd, (struct sockaddr *)&clientAddress,(unsigned int*) &clientSize);
         char c;
-        char *message = "Hello desde gitpod";
-        while(read(clientSocket,&c,1)){
-            printf("%c",c);
-            write(clientSocket,&c,1);
-
-        }   
+        char *message = "Hello desde goorm";   
         write(clientSocket,message,strlen(message));
         close(clientSocket);
     }
