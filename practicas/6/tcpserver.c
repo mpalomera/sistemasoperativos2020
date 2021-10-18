@@ -20,7 +20,7 @@ int main(){
         int clientSize = sizeof( clientAddress);
         int clientSocket = accept(sockfd, (struct sockaddr *)&clientAddress,(unsigned int*) &clientSize);
         char c;
-        char *message = "Hello desde goorm";   
+        char *message = "HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=ISO-8859-1\n\n   Hello desde gitpod";   
         write(clientSocket,message,strlen(message));
         close(clientSocket);
     }

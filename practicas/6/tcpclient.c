@@ -16,13 +16,13 @@ int main(int argc, char **argv) {
     struct hostent *serverInfo = gethostbyname(hostName);
     bzero(&serverAddress, sizeof(serverAddress));
     serverAddress.sin_family = AF_INET;
-    serverAddress.sin_port = htons(2727);
+    serverAddress.sin_port = htons(80);
     // serverAddress.sin_addr = serverInfo->h_addr_list[0]; // no se puede    
     bcopy((char *)serverInfo->h_addr, 
 	  (char *)&serverAddress.sin_addr.s_addr, serverInfo->h_length);
 
     int sockfd = socket(AF_INET, SOCK_STREAM, 0); 
-    connect(sockfd,&serverAddress,sizeof(serverAddress));
+    connect(sockfd,(const struct sockaddr *)&serverAddress,sizeof(serverAddress));
     
     write(sockfd,message,strlen(message));
     while(read(sockfd,&c,1)){
